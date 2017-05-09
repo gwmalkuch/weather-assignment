@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+        src="http://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $.get('http://api.geonames.org/weatherJSON?north=41&south=39&east=-104&west=-106&username=ertyseidohl', function (res) { 
+                for (var key in res.weatherObservations) {
+                    $('body').append('<p>Station Name: ' + res.weatherObservations[key].stationName + '</p>')
+                    $('body').append('<p>Weather Condition: ' + res.weatherObservations[key].weatherCondition + '</p>')
+                    $('body').append('<p>Wind Direrction: ' + res.weatherObservations[key].windDirection + '</p>')
+                    $('body').append('<p>Wind Speed: ' + res.weatherObservations[key].windSpeed + '</p>')
+                    $('body').append('<p>Latitude: ' + res.weatherObservations[key].lat + '</p>')
+                    $('body').append('<p>Longitude: ' + res.weatherObservations[key].lng + '</p>')
+                    $('body').append('<p>clouds: ' + res.weatherObservations[key].clouds + '</p>')
+                    $('body').append('<p>Dew Point: ' + res.weatherObservations[key].dewPoint + '</p>')
+                    $('body').append('<p>Date Time: ' + res.weatherObservations[key].datetime + '</p>')
+                    $('body').append('<p>Temperature: ' + res.weatherObservations[key].temperature + '</p>')
+                    $('body').append('<p>Humidity: ' + res.weatherObservations[key].humidity + '</p>')
+                }
+            })
+        });
+    </script>
+</body>
+</html>
